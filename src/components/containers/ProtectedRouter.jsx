@@ -2,10 +2,10 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useUserContext } from './UserProvider';
 
-const ProtectedRouter = ({children}) => {
+const ProtectedRouter = () => {
 
-  const {user} = useUserContext()
-  if(!user){
+  const {isAuthenticated} = useUserContext()
+  if(!isAuthenticated){
     return <Navigate to="/login" />
   }
   return (

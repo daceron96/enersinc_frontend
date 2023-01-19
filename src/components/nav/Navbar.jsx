@@ -16,7 +16,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { RecentActors, PersonAdd, Logout, Login } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useUserContext } from "../UserProvider";
+import { useUserContext } from "../containers/UserProvider";
 
 const drawerWidth = 240;
 

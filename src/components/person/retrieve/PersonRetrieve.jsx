@@ -10,7 +10,7 @@ import {
   Stack,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { usePerson } from "../PersonProvider";
+import { usePerson } from "../../containers/PersonProvider";
 import ItemRetrieve from "./ItemRetrieve";
 import { documentType } from "../../../models/documentType.enum";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +59,7 @@ const PersonRetrieve = ({
   const { retrieveData } = usePerson().personData;
   const [data, setData] = useState({});
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     retrieveData(idUser).then((data) => {
@@ -107,7 +107,7 @@ const PersonRetrieve = ({
             variant="contained"
             size="small"
             color="success"
-            // onClick={() => navigate(`/update/${idUser}`)}
+            onClick={() => navigate(`/update/${idUser}`)}
           >
             Actualizar
           </Button>

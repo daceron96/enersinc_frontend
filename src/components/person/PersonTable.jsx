@@ -14,7 +14,7 @@ import {
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import ConfirmDelete from "../dialog/ConfirmDelete";
-import { usePerson } from "./PersonProvider";
+import { usePerson } from "../containers/PersonProvider";
 import PersonRetrieve from "./retrieve/PersonRetrieve";
 import ItemTable from "./table/ItemTable";
 

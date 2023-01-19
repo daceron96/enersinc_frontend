@@ -14,17 +14,16 @@ import {
 import React, { useState } from "react";
 import { useForm } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { useUserContext } from "../components/UserProvider";
-
+import { useUserContext } from "../components/containers/UserProvider";
 const Login = () => {
   const { handleData, formData } = useForm();
-  const {login} = useUserContext()
+  const { login } = useUserContext();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleLogin = () => {
     login(formData)
-      .then(()=>{
-        navigate('/')
+      .then(() => {
+        navigate("/");
       })
       .catch(({ response }) => {
         setError(response.data.error);

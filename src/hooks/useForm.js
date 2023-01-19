@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-export const useForm = (data) => {
+export const useForm = () => {
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState({});
 
   const handleData = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  
-  return { formData, formError, handleData, setFormError };
+  return { formData, formError, handleData, setFormError, setFormData };
 };

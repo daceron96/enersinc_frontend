@@ -3,11 +3,11 @@ import Person from "./pages/Person";
 import Navbar from "./components/nav/Navbar";
 import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import PersonForm from "./components/person/PersonForm";
+import PersonFormProvider from "./components/containers/PersonFormProvider";
 import PersonTable from "./components/person/PersonTable";
 import Login from "./pages/Login";
-import UserProvider from "./components/UserProvider";
-import ProtectedRouter from "./components/ProtectedRouter";
+import UserProvider from "./components/containers/UserProvider";
+import ProtectedRouter from "./components/containers/ProtectedRouter";
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
               <Route element={<ProtectedRouter />}>
                 <Route path="/*" element={<Person />}>
                   <Route path="" element={<PersonTable />} />
-                  <Route path="create" element={<PersonForm />} />
-                  {/* <Route path="update/:idUser" element={<PersonForm />} /> */}
+                  <Route path="create" element={<PersonFormProvider />} />
+                  <Route path="update/:idUser" element={<PersonFormProvider />} />
                 </Route>
               </Route>
               <Route path="/login" element={<Login />} />

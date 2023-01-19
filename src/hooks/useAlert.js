@@ -11,7 +11,6 @@ export const useAlert = () => {
     setMessage(message)
     setSeverity(severity)
     setOpen(true)
-    console.log("entre")
   }
 
   const handleCloseAlert = () =>{

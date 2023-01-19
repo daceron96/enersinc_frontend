@@ -1,6 +1,6 @@
 import { Grid, MenuItem, TextField } from "@mui/material";
 import React from "react";
-import { usePersonForm } from "../PersonForm";
+import { usePersonForm } from "../../containers/PersonFormProvider";
 
 export default function InputForm({ input }) {
   const {handleData, formError} = usePersonForm();

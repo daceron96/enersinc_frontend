@@ -4,31 +4,50 @@ import { setAuthToken, urlBase } from "../app/config";
 
 export const useUser = () => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const user = JSON.parse(localStorage.getItem("user"));
-    setAuthToken(token);
-    setUser(user);
+    if (token) {
+      setAuthToken(token);
+      validateToken()
+        .then((data) => {
+          setUser(data);
+        })
+        .catch((error) => {
+          localStorage.clear();
+          setIsAuthenticated(false);
+        });
+    } else {
+      setIsAuthenticated(false);
+    }
   }, []);
+
+  const validateToken = () => {
+    return axios.get(`${urlBase}/validateToken/`).then(({ data }) => {
+      return data;
+    });
+  };
 
   const login = (formData) => {
     return axios.post(`${urlBase}/login/`, formData).then(({ data }) => {
       setAuthToken(data.token);
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
       setUser(data.user);
+      setIsAuthenticated(true);
     });
   };
 
-  const logout = () =>{
-    localStorage.clear()
-    setUser(null)
-  }
+  const logout = () => {
+    localStorage.clear();
+    setUser(null);
+    setIsAuthenticated(false);
+  };
 
   return {
     user,
+    isAuthenticated,
     login,
-    logout
+    logout,
   };
 };

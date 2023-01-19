@@ -1,4 +1,4 @@
-import PersonProvider from "../components/person/PersonProvider";
+import PersonProvider from "../components/containers/PersonProvider";
 import {Outlet} from 'react-router-dom'
 import AlertSnackbar from "../components/dialog/AlertSnackbar";
 

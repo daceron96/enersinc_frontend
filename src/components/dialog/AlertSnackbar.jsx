@@ -1,6 +1,6 @@
 import { Alert, Snackbar, Stack } from '@mui/material';
 import React from 'react';
-import { usePerson } from '../person/PersonProvider';
+import { usePerson } from '../containers/PersonProvider';
 
 const AlertSnackbar = () => {
 
